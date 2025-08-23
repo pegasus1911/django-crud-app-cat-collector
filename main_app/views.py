@@ -14,12 +14,17 @@ def about(request):
 def cat_index(request):
   cats = Cat.objects.all()
   return render(request, 'cats/index.html', { 'cats': cats })
+
   
 def cat_detail(request, cat_id):
-  cat = Cat.objects.get(id=cat_id)
-  feeding_form=FeedingForm()
-  print('cat: ', cat)
-  return render(request, 'cats/detail.html', { 'cat': cat, 'feeding_form':feeding_form,'toys':toys})
+    cat = Cat.objects.get(id=cat_id)
+    toys_cat_doesnt_have = Toy.objects.exclude(id__in=cat.toy.all().values_list('id', flat=True))
+    feeding_form = FeedingForm()
+    return render(request, 'cats/detail.html', {
+        'cat': cat,
+        'feeding_form': feeding_form,
+        'toys': toys_cat_doesnt_have
+    })
 
 # CLASS BASED VIEWS
 class CatCreate(CreateView):
@@ -60,3 +65,9 @@ class ToyUpdate(UpdateView):
 class ToyDelete(DeleteView):
     model = Toy
     success_url = '/toys/'  
+def associate_toy(request,cat_id,toy_id):
+  Cat.objects.get(id=cat_id).toy.add(toy_id)
+  return redirect('cat-detail',cat_id=cat_id)
+def remove_toy(request, cat_id, toy_id):
+    Cat.objects.get(id=cat_id).toys.remove(toy_id)
+    return redirect('cat-detail', cat_id=cat_id)
