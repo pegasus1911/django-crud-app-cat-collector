@@ -12,7 +12,6 @@
   />
   <title>Cat Collector</title>
   {% block head %}
-  
   {% endblock %}
 </head>
 <body>
@@ -24,8 +23,11 @@
     </div>
     <nav>
       <ul>
-        <li><a href="/cats">All Cats</a></li>
-        <li><a href="/about">About</a></li>
+        <li><a href="{% url 'cat-index' %}">All Cats</a></li>
+        <li><a href="{% url 'cat-create' %}">Add a Cat</a></li>
+        <li><a href="{%url 'toy-index'%}">All Toys</a></li>
+        <li><a href="{%url 'toy-create'%}">Create a toy</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
       </ul>
     </nav>
   </header>

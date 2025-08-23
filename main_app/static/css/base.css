@@ -29,9 +29,9 @@ body {
     'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
   min-height: 100vh;
-  --nav-bg: rgb(145, 255, 135);
-  --nav-bg-ff: rgb(145, 255, 135);
-  --borders: rgb(17, 165, 3) solid 2px;
+  --nav-bg: rgb(111, 209, 139);
+  --nav-bg-ff: rgb(111, 209, 139);
+  --borders: rgb(48, 160, 80) solid 2px;
   --text-color: rgb(17, 20, 17);
   --link-hover-color: rgb(16, 56, 158);
   --button-bg: rgb(245, 245, 245);
